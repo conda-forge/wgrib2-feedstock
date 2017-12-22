@@ -12,19 +12,19 @@ source:
     - no_proj.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win or osx]
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
     - g2clib
-    - mysql
+    - mysql-connector-c 6.1.*
     - libnetcdf 4.4.*
     - gcc
   run:
     - g2clib
-    - mysql
+    - mysql-connector-c 6.1.*
     - libnetcdf 4.4.*
     - libgcc  # [linux]
     - libgfortran  # [osx]
