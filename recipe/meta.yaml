@@ -1,4 +1,4 @@
-{% set version = "2.0.5" %}
+{% set version = "2.0.7" %}
 
 package:
   name: wgrib2
@@ -7,27 +7,34 @@ package:
 source:
   fn: wgrib2_nolib.tgz
   url: ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v{{ version }}
-  sha256: 453e7e1c2b0d42f5b3d09a44ca1a4fe7c3fd0be4babfd6cf6e4968d0f04184a7
+  sha256: e74b2a523e4aa54576746fce89fd2f28ec8a483fcbf55e36ed08ed1bb7673e77
   patches:
     - no_proj.patch
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win or osx]
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
+  host:
     - g2clib
     - mysql-connector-c 6.1.*
-    - libnetcdf 4.5.*
-    - gcc
+    - libnetcdf
+    - libpng
+    - zlib
+    - jasper
   run:
     - g2clib
     - mysql-connector-c 6.1.*
-    - libnetcdf >=4.5
-    - libgcc  # [linux]
-    - libgfortran  # [osx]
+    - libnetcdf
+    - libpng
+    - zlib
+    - jasper
 
 test:
   commands:
@@ -38,6 +45,7 @@ test:
 about:
   home: http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2
   license: GPL-2.0
+  license_file: wgrib2/LICENSE-wgrib2
   summary: 'Utility to read and write grib2 files'
 
 extra:
