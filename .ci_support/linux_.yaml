@@ -1,15 +1,21 @@
 c_compiler:
-- toolchain_c
+- gcc
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 cxx_compiler:
-- toolchain_cxx
+- gxx
+docker_image:
+- condaforge/linux-anvil-comp7
 fortran_compiler:
-- toolchain_fort
+- gfortran
 jasper:
 - 1.900.1
 libnetcdf:
 - '4.6'
 libpng:
-- 1.6.34
+- 1.6.35
 pin_run_as_build:
   jasper:
     max_pin: x
