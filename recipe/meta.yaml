@@ -12,7 +12,7 @@ source:
     - no_proj.patch
 
 build:
-  number: 1002
+  number: 1003
   skip: True  # [win or osx]
   detect_binary_files_with_prefix: true
 
