@@ -1,4 +1,4 @@
-{% set version = "2.0.7" %}
+{% set version = "2.0.8" %}
 
 package:
   name: wgrib2
@@ -6,13 +6,14 @@ package:
 
 source:
   fn: wgrib2_nolib.tgz
-  url: ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v{{ version }}
-  sha256: e74b2a523e4aa54576746fce89fd2f28ec8a483fcbf55e36ed08ed1bb7673e77
+  url: http://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v{{ version }}
+  sha256: 860b97f1f768da10386c41a635ed4951bd9c496ab402ccea1b48d4871dbffb04
   patches:
-    - no_proj.patch
+    - wgrib2-nogctpc.patch
+    - wgrib2-jasper-2.patch
 
 build:
-  number: 1003
+  number: 0
   skip: True  # [win or osx]
   detect_binary_files_with_prefix: true
 
@@ -24,6 +25,7 @@ requirements:
   host:
     - g2clib
     - mysql-connector-c 6.1.*
+    - mysql
     - libnetcdf
     - libpng
     - zlib
@@ -31,16 +33,17 @@ requirements:
   run:
     - g2clib
     - mysql-connector-c 6.1.*
+    - mysql
     - libnetcdf
     - libpng
     - zlib
     - jasper
 
 test:
+  files:
+    - example.grib2
   commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
-    # - wgrib2 -config # works but the return code !=0
+    - wgrib2 example.grib2 -set_grib_type same -new_grid_winds earth -new_grid latlon -126:3050:0.02 23.01:1340:0.02 out.grib2
 
 about:
   home: http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2
