@@ -25,8 +25,6 @@ libpng:
 pin_run_as_build:
   jasper:
     max_pin: x
-  libnetcdf:
-    max_pin: x.x.x
   libpng:
     max_pin: x.x
   zlib:
