@@ -5,7 +5,6 @@ export CFLAGS="-I.. -I${PREFIX}/include ${CFLAGS} -fopenmp"
 
 
 export FC=$FC
-export USE_IPOLATES=3
 
 rm -r wgrib2/{fnlist,Gctpc,gctpc_ll2xy,new_grid_lambertc}.[ch]
 
