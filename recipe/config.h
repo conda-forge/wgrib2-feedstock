@@ -8,6 +8,5 @@
 #define USE_JASPER
 #define CC "gcc"
 #define FC "gfortran"
-#define IPOLATES_LIB "ip2lib_d"
-#define USE_IPOLATES 3
+#define USE_IPOLATES 0
 #define HDF5 "system"
