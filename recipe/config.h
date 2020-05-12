@@ -8,5 +8,5 @@
 #define USE_JASPER
 #define CC "gcc"
 #define FC "gfortran"
-#define USE_IPOLATES
+#define USE_IPOLATES 3
 #define HDF5 "system"
