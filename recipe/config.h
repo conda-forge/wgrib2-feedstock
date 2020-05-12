@@ -6,3 +6,6 @@
 #define USE_OPENMP
 #define USE_PNG
 #define USE_JASPER
+#define CC "gcc"
+#define FC "gfortran"
+#define HDF5 "system"
