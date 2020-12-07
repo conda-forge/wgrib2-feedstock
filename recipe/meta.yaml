@@ -12,7 +12,7 @@ source:
     - no_proj.patch
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win or osx]
   detect_binary_files_with_prefix: true
 
@@ -37,16 +37,16 @@ requirements:
     - jasper
 
 test:
+  files:
+    - file.grib2
   commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
-    # - wgrib2 -config # works but the return code !=0
+    - wgrib2 file.grib2 -netcdf out.nc
 
 about:
   home: http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2
-  license: GPL-2.0
+  license: GPL-2.0-or-later
   license_file: wgrib2/LICENSE-wgrib2
-  summary: 'Utility to read and write grib2 files'
+  summary: Utility to read and write grib2 files
 
 extra:
   recipe-maintainers:
