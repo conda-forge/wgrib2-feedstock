@@ -10,6 +10,7 @@ source:
   sha256: 860b97f1f768da10386c41a635ed4951bd9c496ab402ccea1b48d4871dbffb04
   patches:
     - no_proj.patch
+    - jasper2.patch
 
 build:
   number: 4
