@@ -1,6 +1,7 @@
 /* config.h */
 #define USE_REGEX
 #define USE_TIGGE
+#define USE_NAMES NCEP
 #define USE_NETCDF4
 #define USE_MYSQL
 #define USE_OPENMP
