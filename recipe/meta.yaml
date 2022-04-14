@@ -1,4 +1,4 @@
-{% set version = "3.1.0" %}
+{% set version = "3.1.1" %}
 
 package:
   name: wgrib2
@@ -7,13 +7,13 @@ package:
 source:
   fn: wgrib2_nolib.tgz
   url: https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v{{ version }}
-  sha256: eba0d936d6df9bcbfdfa2d91bfbf2c960d14e8832136bc7452f0b594cf4c334a
+  sha256: 7b41c725623a494df39eb2553f021e76c4b55cbd7a84c21fa684928f355a210f
   patches:
     - no_proj.patch
 
 build:
   number: 0
-  skip: True  # [win or osx]
+  skip: true  # [win or osx]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -21,6 +21,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
+    - make
   host:
     - g2clib
     - mysql-connector-c 6.1.*
@@ -44,7 +45,7 @@ about:
   home: http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2
   license: GPL-2.0
   license_file: wgrib2/LICENSE-wgrib2
-  summary: 'Utility to read and write grib2 files'
+  summary: Utility to read and write grib2 files
 
 extra:
   recipe-maintainers:
