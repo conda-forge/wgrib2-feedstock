@@ -24,14 +24,14 @@ requirements:
     - make
   host:
     - g2clib
-    - mysql-connector-cpp
+    - mysql-devel
     - libnetcdf
     - libpng
     - zlib
     - jasper
   run:
     - g2clib
-    - mysql-connector-cpp
+    - mysql-libs
     - libnetcdf
     - libpng
     - zlib
