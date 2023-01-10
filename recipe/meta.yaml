@@ -12,7 +12,7 @@ source:
     - no_proj.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or osx]
   detect_binary_files_with_prefix: true
 
@@ -24,14 +24,14 @@ requirements:
     - make
   host:
     - g2clib
-    - mysql-connector-c 6.1.*
+    - mysql-devel
     - libnetcdf
     - libpng
     - zlib
     - jasper
   run:
     - g2clib
-    - mysql-connector-c 6.1.*
+    - mysql-libs
     - libnetcdf
     - libpng
     - zlib
