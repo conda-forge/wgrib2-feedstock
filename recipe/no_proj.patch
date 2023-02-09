@@ -1,28 +1,30 @@
---- grib2.orig/wgrib2/geo.c	2021-10-18 10:47:31.802679437 -0500
-+++ grib2/wgrib2/geo.c	2021-10-18 10:48:27.443805569 -0500
-@@ -917,9 +917,6 @@
+--- grib2.orig/wgrib2/geo.c	2023-02-09 15:08:27.989890023 -0600
++++ grib2/wgrib2/geo.c	2023-02-09 15:08:51.944197201 -0600
+@@ -917,10 +917,6 @@
      int grid_type;
  
  
--    if (use_gctpc && output_order == wesn && nx > 0 && ny > 0) {
+-    if (geolocation == gctpc) {
 -       if (gctpc_ll2xy_init(sec, lon, lat) == 0) return 0;
 -    }
- 
+-
      grid_type = code_table_3_1(sec);
  
-@@ -974,10 +971,6 @@
+     if  (!GDS_Scan_staggered(scan) && nx > 0 && ny > 0 && output_order == wesn) {
+@@ -974,11 +970,6 @@
      unsigned int k;
  
  
--    if (use_gctpc && output_order == wesn && nx > 0 && ny > 0) {
+-    if (geolocation == gctpc) {
 -	/* will fix it so that everything is 0 for out of bounds */
 -	if (gctpc_ll2i(1, &plon, &plat, &k) == 0) return ((long int) k) - 1;
 -    }
- 
+-
      grid_type = code_table_3_1(sec);
      
---- grib2.orig/wgrib2/rotll.c	2021-10-18 10:47:31.805679444 -0500
-+++ grib2/wgrib2/rotll.c	2021-10-18 10:48:39.344832548 -0500
+     if  (!GDS_Scan_staggered(scan) && nx > 0 && ny > 0 && output_order == wesn) {
+--- grib2.orig/wgrib2/rotll.c	2023-02-09 15:08:27.992890062 -0600
++++ grib2/wgrib2/rotll.c	2023-02-09 15:10:01.616090650 -0600
 @@ -2,7 +2,6 @@
  #include <stdlib.h>
  #include <string.h>
@@ -31,8 +33,8 @@
  #include "grb2.h"
  #include "wgrib2.h"
  #include "fnlist.h"
---- grib2.orig/wgrib2/wgrib2.c	2021-10-18 10:47:31.806679446 -0500
-+++ grib2/wgrib2/wgrib2.c	2021-10-18 10:49:26.976940511 -0500
+--- grib2.orig/wgrib2/wgrib2.c	2023-02-09 15:08:27.994890087 -0600
++++ grib2/wgrib2/wgrib2.c	2023-02-09 15:10:59.313830547 -0600
 @@ -162,8 +162,6 @@
      if (initial_call) {		/* only done 1st time */
  	setup_user_gribtable();
@@ -42,15 +44,14 @@
          initial_call = 0;
      }
  
-@@ -584,11 +582,6 @@
- 		}
- #endif
+@@ -577,10 +575,6 @@
+             if (latlon) {
+ 		i = 1;
  
 -		if (use_gctpc && i != 0) {				/* use gctpc to get lat lon values */
 -		    i = gctpc_get_latlon(sec, &lon, &lat);
 -		    if (i == 0) geolocation = gctpc;
--//		    if (i == 0) fprintf(stderr,"gctpc_get_lat used\n");
 -		}
  
- 		if (i != 0) {
- 		    i = get_latlon(sec, &lon, &lat);		 /* get lat lon of grid points using built-in code */
+ #ifdef USE_PROJ4
+ 		if (use_proj4 && i != 0) {				/* use Proj4 to get lat lon values */
