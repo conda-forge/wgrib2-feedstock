@@ -1,4 +1,4 @@
-{% set version = "3.1.1" %}
+{% set version = "3.1.2" %}
 
 package:
   name: wgrib2
@@ -7,12 +7,12 @@ package:
 source:
   fn: wgrib2_nolib.tgz
   url: https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v{{ version }}
-  sha256: 7b41c725623a494df39eb2553f021e76c4b55cbd7a84c21fa684928f355a210f
+  sha256: 548c77cf3cf9b8cddcebcb3cebcfbddbe93bb4a429d7a833efb030cd5ca121d2
   patches:
     - no_proj.patch
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win or osx]
   detect_binary_files_with_prefix: true
 
