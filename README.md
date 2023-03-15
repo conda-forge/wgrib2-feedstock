@@ -1,11 +1,11 @@
-About wgrib2
-============
+About wgrib2-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wgrib2-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2
 
 Package license: GPL-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wgrib2-feedstock/blob/main/LICENSE.txt)
 
 Summary: Utility to read and write grib2 files
 
