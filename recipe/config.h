@@ -3,6 +3,7 @@
 #define USE_TIGGE
 #define USE_NAMES NCEP
 #define USE_NETCDF4
+#define USE_HDF5
 #define USE_MYSQL
 #define USE_OPENMP
 #define USE_PNG
