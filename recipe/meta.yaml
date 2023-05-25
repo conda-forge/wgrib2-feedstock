@@ -10,9 +10,10 @@ source:
   sha256: 548c77cf3cf9b8cddcebcb3cebcfbddbe93bb4a429d7a833efb030cd5ca121d2
   patches:
     - no_proj.patch
+    - jasper4.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or osx]
   detect_binary_files_with_prefix: true
 

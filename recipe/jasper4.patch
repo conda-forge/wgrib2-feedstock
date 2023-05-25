@@ -1,0 +1,44 @@
+diff -ruN -x __pycache__ -x obj -x '*~' -x tags -x TAGS -x autom4te.cache grib2.orig/wgrib2/enc_jpeg2000_clone.c grib2/wgrib2/enc_jpeg2000_clone.c
+--- grib2.orig/wgrib2/enc_jpeg2000_clone.c	2023-05-25 14:42:47.730186711 +0200
++++ grib2/wgrib2/enc_jpeg2000_clone.c	2023-05-25 14:47:04.150500344 +0200
+@@ -67,7 +67,7 @@
+ *
+ *$$$*/
+ {
+-    int ier,rwcnt;
++    int ier,rwcnt,fmt;
+     jas_image_t image;
+     jas_stream_t *jpcstream,*istream;
+     jas_image_cmpt_t cmpt,*pcmpt;
+@@ -171,7 +171,8 @@
+ //
+ //     Encode image.
+ //
+-    ier=jpc_encode(&image,jpcstream,opts);
++    fmt=jas_image_strtofmt("jpc");
++    ier=jas_image_encode(&image,jpcstream,fmt,opts);
+     if ( ier != 0 ) {
+        printf(" jpc_encode return = %d \n",ier);
+        return -3;
+diff -ruN -x __pycache__ -x obj -x '*~' -x tags -x TAGS -x autom4te.cache grib2.orig/wgrib2/unpk.c grib2/wgrib2/unpk.c
+--- grib2.orig/wgrib2/unpk.c	2023-05-25 14:42:47.755186839 +0200
++++ grib2/wgrib2/unpk.c	2023-05-25 15:11:21.060965503 +0200
+@@ -55,7 +55,7 @@
+     jas_stream_t *jpcstream;
+     jas_image_cmpt_t *pcmpt;
+     jas_matrix_t *jas_data;
+-    int j, k;
++    int j, k, fmt;
+ #endif
+ #ifdef USE_OPENJPEG
+     int *ifld, err;
+@@ -203,7 +203,8 @@
+         image = NULL;
+ 	opts = NULL;
+         jpcstream=jas_stream_memopen((char *) sec[7]+5, (int) GB2_Sec7_size(sec)-5);
+-	image = jpc_decode(jpcstream, opts);
++        fmt = jas_image_strtofmt("jpc");
++	image = jas_image_decode(jpcstream, fmt, opts);
+ 	if (image == NULL) fatal_error("jpeg2000 decoding", "");
+ 	pcmpt = image->cmpts_[0];
+         if (image->numcmpts_ != 1 ) 
