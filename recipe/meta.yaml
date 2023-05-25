@@ -49,5 +49,6 @@ about:
 
 extra:
   recipe-maintainers:
+    - zklaus
     - ocefpaf
     - akrherz
