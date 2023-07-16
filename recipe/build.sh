@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export LDFLAGS="-lg2c -ljasper -lnetcdf -lpng -lmysqlclient -lz -lm -fopenmp $LDFLAGS"
+export LDFLAGS="-lg2c -ljasper -lnetcdf -lpng -lmysqlclient -lsz -lz -lm -fopenmp $LDFLAGS"
 export CFLAGS="-I.. -I$PREFIX/include/mysql -fopenmp $CFLAGS"
 
 rm -rf g2clib-* wgrib2/{fnlist,Gctpc,gctpc_ll2xy,new_grid_lambertc}.[ch]
