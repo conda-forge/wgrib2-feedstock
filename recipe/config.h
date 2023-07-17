@@ -1,4 +1,5 @@
 /* config.h */
+#define USE_AEC
 #define USE_REGEX
 #define USE_TIGGE
 #define USE_NAMES NCEP

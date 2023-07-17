@@ -20,6 +20,8 @@ fortran_compiler_version:
 - '12'
 jasper:
 - '4'
+libaec:
+- '1'
 libnetcdf:
 - 4.9.2
 libpng:
