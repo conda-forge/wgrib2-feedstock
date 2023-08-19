@@ -46,7 +46,7 @@ test:
 
 about:
   home: http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2
-  license: GPL-2.0
+  license: GPL-2.0-only
   license_file: wgrib2/LICENSE-wgrib2
   summary: Utility to read and write grib2 files
 
