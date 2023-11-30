@@ -1,28 +1,30 @@
---- grib2.orig/wgrib2/geo.c	2023-02-09 15:08:27.989890023 -0600
-+++ grib2/wgrib2/geo.c	2023-02-09 15:08:51.944197201 -0600
-@@ -917,10 +917,6 @@
+--- grib2.orig/wgrib2/geo.c	2023-11-29 22:40:19.573240890 -0600
++++ grib2/wgrib2/geo.c	2023-11-29 22:49:38.245261795 -0600
+@@ -908,11 +908,6 @@
+     double s, c;
      int grid_type;
  
- 
--    if (geolocation == gctpc) {
+-    /* if using gctpc: use gctpc routines to find closest point */
+-    if  (!GDS_Scan_staggered(scan) && nx > 0 && ny > 0 && output_order == wesn && geolocation == gctpc) {
 -       if (gctpc_ll2xy_init(sec, lon, lat) == 0) return 0;
 -    }
 -
-     grid_type = code_table_3_1(sec);
+     /* could use proj routines in future */
  
-     if  (!GDS_Scan_staggered(scan) && nx > 0 && ny > 0 && output_order == wesn) {
-@@ -974,11 +970,6 @@
+     grid_type = code_table_3_1(sec);
+@@ -970,12 +965,6 @@
+     double t, xx, yy, zz, small;
      unsigned int k;
  
- 
--    if (geolocation == gctpc) {
+-    /* if gctpc: use gctpc routines */
+-    if  (!GDS_Scan_staggered(scan) && nx > 0 && ny > 0 && output_order == wesn && geolocation == gctpc) {
 -	/* will fix it so that everything is 0 for out of bounds */
 -	if (gctpc_ll2i(1, &plon, &plat, &k) == 0) return ((long int) k) - 1;
 -    }
 -
+     /* could use proj routines in future */
+ 
      grid_type = code_table_3_1(sec);
-     
-     if  (!GDS_Scan_staggered(scan) && nx > 0 && ny > 0 && output_order == wesn) {
 --- grib2.orig/wgrib2/rotll.c	2023-02-09 15:08:27.992890062 -0600
 +++ grib2/wgrib2/rotll.c	2023-02-09 15:10:01.616090650 -0600
 @@ -2,7 +2,6 @@
