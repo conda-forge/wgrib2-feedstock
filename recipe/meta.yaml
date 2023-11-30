@@ -1,4 +1,4 @@
-{% set version = "3.1.2" %}
+{% set version = "3.1.3" %}
 
 package:
   name: wgrib2
@@ -7,13 +7,13 @@ package:
 source:
   fn: wgrib2_nolib.tgz
   url: https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2_nolib.tgz.v{{ version }}
-  sha256: 548c77cf3cf9b8cddcebcb3cebcfbddbe93bb4a429d7a833efb030cd5ca121d2
+  sha256: 79ee6e3aa15f90cc1a03ece9ba8ade7ded11017ede09ff658ea7b3b3e077801c
   patches:
     - no_proj.patch
     - jasper4.patch
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win or osx]
   detect_binary_files_with_prefix: true
 
