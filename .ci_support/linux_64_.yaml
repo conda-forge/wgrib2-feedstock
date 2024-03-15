@@ -26,6 +26,8 @@ libnetcdf:
 - 4.9.2
 libpng:
 - '1.6'
+mysql_devel:
+- '8.3'
 target_platform:
 - linux-64
 zip_keys:
