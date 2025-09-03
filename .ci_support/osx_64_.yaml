@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -17,17 +17,17 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '13'
+- '14'
 jasper:
 - '4'
 libaec:
 - '1'
 libnetcdf:
-- 4.9.2
+- 4.9.3
 libpng:
 - '1.6'
 macos_machine:
