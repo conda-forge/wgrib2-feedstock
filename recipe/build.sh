@@ -3,12 +3,24 @@
 export LDFLAGS="-lg2c -ljasper -lnetcdf -lpng -lmysqlclient -lsz -lz -lm -fopenmp $LDFLAGS"
 export CFLAGS="-I.. -I$PREFIX/include/mysql -fopenmp $CFLAGS"
 
-rm -rf g2clib-* wgrib2/{fnlist,Gctpc,gctpc_ll2xy,new_grid_lambertc}.[ch]
-cp $RECIPE_DIR/config.h wgrib2/config.h
+mkdir bld
+cd bld
+cmake ${CMAKE_ARGS} \
+  -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DUSE_G2CLIB_HIGH=ON \
+  -DUSE_G2CLIB_LOW=ON \
+  -DUSE_JPEG=ON \
+  -DUSE_MYSQL=ON \
+  -DUSE_NETCDF=ON \
+  -DUSE_OPENJPEG=ON \
+  -DUSE_OPENMP=ON \
+  -DUSE_PNG=ON \
+  ..
 
-pushd wgrib2
-./function.sh
 make
+make install
 
-cp wgrib2 $PREFIX/bin
-popd
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+  ctest --verbose
+fi

@@ -8,9 +8,6 @@ source:
   fn: wgrib2_nolib.tgz
   url: https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: b741a07710a8195c99a7d50de05bde90182ab4334f5c4a0d6d057c4e20cc6a75
-  patches:
-    - no_proj.patch
-    - jasper4.patch
 
 build:
   number: 0
@@ -23,6 +20,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - {{ stdlib("c") }}
+    - cmake
     - make
   host:
     - g2clib
