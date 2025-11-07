@@ -1,4 +1,4 @@
-{% set version = "3.7.0" %}
+{% set version = "3.8.0" %}
 
 package:
   name: wgrib2
@@ -7,7 +7,7 @@ package:
 source:
   fn: wgrib2_nolib.tgz
   url: https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b741a07710a8195c99a7d50de05bde90182ab4334f5c4a0d6d057c4e20cc6a75
+  sha256: 39faebada36da5457c75f0980bb68fa299b221b3e6b335bb7d29006a35830c54
 
 build:
   number: 0
