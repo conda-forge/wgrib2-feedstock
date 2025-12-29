@@ -29,7 +29,7 @@ libnetcdf:
 libpng:
 - '1.6'
 mysql_devel:
-- '9.3'
+- '9.5'
 target_platform:
 - linux-ppc64le
 zip_keys:
