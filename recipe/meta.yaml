@@ -13,7 +13,7 @@ source:
     - gh510_posix.patch
 
 build:
-  number: 5
+  number: 6
   skip: true  # [win]
   detect_binary_files_with_prefix: true
 
